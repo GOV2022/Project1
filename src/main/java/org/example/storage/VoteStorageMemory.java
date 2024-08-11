@@ -5,6 +5,7 @@ import org.example.storage.api.IVoteStorage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class VoteStorageMemory implements IVoteStorage {
