@@ -43,7 +43,7 @@
     <br>
 	<p class="class1">Выберите жанры:</p>
 	<c:forEach items="${genres}" var="item">
-         <option><c:out value="${item}"/></option><input type="checkbox" name="genre" value="<c:out value="${item}"/>"/><span>${item}</span></br>
+	    <input type="checkbox" name="genre" value="<c:out value="${item}"/>"/><span>${item}</span></br>
     </c:forEach>
 	<br>
 	<p class="class1">О себе:</p>
