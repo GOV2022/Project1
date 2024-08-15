@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
@@ -32,27 +31,28 @@
     </style>
 </head>
 <body>
-	<form action="http://localhost:8080/Project1/vote" method="POST">
+<form action="http://localhost:8080/Project1/vote" method="POST">
 
 	<p class="class1">Выберите исполнителя:</p>
 	<select class="class2" name="artist">
 	<c:forEach items="${artists}" var="item">
-         <option><c:out value="${item}"/></option>
+         <option value="<c:out value="${item.key}"/>"><c:out value="${item.value}"/></option>
     </c:forEach>
     </select>
     <br>
+
 	<p class="class1">Выберите жанры:</p>
 	<c:forEach items="${genres}" var="item">
 	    <input type="checkbox" name="genre" value="<c:out value="${item}"/>"/><span>${item}</span></br>
     </c:forEach>
 	<br>
+
 	<p class="class1">О себе:</p>
 	<textarea name="about"></textarea>
 
 	<br><br><br>
 
 	<input class="class3" type="submit" value="Результат голосования">
-
-	</form>
- </body>
+</form>
+</body>
 </html>
