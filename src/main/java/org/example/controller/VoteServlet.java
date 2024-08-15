@@ -1,7 +1,9 @@
 package org.example.controller;
 
 import org.example.dto.VoteDTO;
+import org.example.service.ArtistService;
 import org.example.service.VoteService;
+import org.example.service.api.IArtistService;
 import org.example.service.api.IVoteService;
 
 import jakarta.servlet.ServletException;
@@ -18,23 +20,19 @@ import java.util.List;
 @WebServlet(urlPatterns = "/vote")
 public class VoteServlet extends HttpServlet {
 
-    private final static IVoteService voteService = VoteService.getInstance();
+    private static IVoteService voteService = VoteService.getInstance();
+    private static IArtistService artistService = ArtistService.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
             IOException {
-        List<String> dataArtist = new ArrayList<>();
-        dataArtist.add("Asti");
-        dataArtist.add("Билан");
-        dataArtist.add("Пугачева");
-
 
         List<String> dataGenre = new ArrayList<>();
         dataGenre.add("Хип-хоп");
         dataGenre.add("Инструментал");
         dataGenre.add("POP");
 
-        req.setAttribute("artists", dataArtist);
+        req.setAttribute("artists", artistService.get());
         req.setAttribute("genres", dataGenre);
         req.getRequestDispatcher("/template/index.jsp").forward(req, resp);
     }
